@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scene/titlescreen/buttons/LoadButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/titlescreen/Royal Convoy Title.png" type="Texture" id=2]
+[ext_resource path="res://scene/titlescreen/buttons/ExitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/titlescreen/buttons/NewGameButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/titlescreen/Royal Convoy Backround.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/musics/Legionnaire.mp3" type="AudioStream" id=6]
+[ext_resource path="res://scene/titlescreen/TitleScreen.gd" type="Script" id=7]
+[ext_resource path="res://assets/musics/start.mp3" type="AudioStream" id=8]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 1160.0
+margin_bottom = 640.0
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 1040.0
+margin_bottom = 106.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 110.0
+margin_right = 1040.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 1040.0
+margin_bottom = 450.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 101.0
+margin_bottom = 181.0
+rect_min_size = Vector2( 360, 80 )
+script = null
+
+[node name="LoadButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 185.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 360, 80 )
+script = null
+
+[node name="ExitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 269.0
+margin_bottom = 349.0
+rect_min_size = Vector2( 360, 80 )
+script = null
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+show_behind_parent = true
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 5 )
+
+[node name="BGM_Main" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Decision_SE" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[connection signal="pressed" from="Menu/CenterRow/Buttons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
