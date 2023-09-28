@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/game/princess-army-cassandra-player.png" type="Texture" id=1]
 [ext_resource path="res://scene/level/cassandra/Level1_Player.gd" type="Script" id=2]
@@ -8,12 +8,23 @@
 [ext_resource path="res://assets/musics/Combat.mp3" type="AudioStream" id=6]
 [ext_resource path="res://assets/face/Cassandra Bloodthorn Face.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/face/goblin.png" type="Texture" id=8]
+[ext_resource path="res://assets/musics/GoblinScream.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/musics/SwordFight.mp3" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 49.0102
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8.5, 31.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 7 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 32 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 31.5, 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 30.5 )
@@ -56,6 +67,7 @@ margin_left = 354.0
 margin_top = 550.0
 margin_right = 978.0
 margin_bottom = 583.0
+percent_visible = false
 
 [node name="EnemyFace" type="TextureRect" parent="Player/UICombat"]
 margin_left = 1035.0
@@ -64,7 +76,7 @@ margin_right = 1235.0
 margin_bottom = 683.0
 texture = ExtResource( 8 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
+[node name="PlayerSprite" type="Sprite" parent="Player"]
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -72,14 +84,31 @@ shape = SubResource( 1 )
 
 [node name="AreaEngagement" type="Area2D" parent="Player"]
 
-[node name="PlayerEngageDetection" type="CollisionShape2D" parent="Player/AreaEngagement"]
+[node name="PlayerEngageDetectionRight" type="CollisionShape2D" parent="Player/AreaEngagement"]
+position = Vector2( 55, 1 )
 shape = SubResource( 4 )
+
+[node name="PlayerEngageDetectionTop" type="CollisionShape2D" parent="Player/AreaEngagement"]
+position = Vector2( 0, -52 )
+shape = SubResource( 5 )
+
+[node name="PlayerEngageDetectionLeft" type="CollisionShape2D" parent="Player/AreaEngagement"]
+position = Vector2( -51, 1 )
+shape = SubResource( 6 )
+
+[node name="PlayerEngageDetectionBottom" type="CollisionShape2D" parent="Player/AreaEngagement"]
+position = Vector2( 0, 54 )
+shape = SubResource( 7 )
+
+[node name="SwordFight_SFX" type="AudioStreamPlayer" parent="Player"]
+pause_mode = 1
+stream = ExtResource( 10 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 position = Vector2( 644, 224 )
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Enemy"]
+[node name="EnemySprite" type="Sprite" parent="Enemy"]
 position = Vector2( -1, 0 )
 texture = ExtResource( 3 )
 
@@ -96,6 +125,9 @@ shape = SubResource( 3 )
 
 [node name="Combat_BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
+[node name="GoblinScream_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="ready" from="Player/UICombat" to="Player" method="_on_UICombat_ready"]
 [connection signal="body_entered" from="Player/AreaEngagement" to="Player" method="_on_AreaEngagement_body_entered"]

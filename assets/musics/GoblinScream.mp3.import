@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GoblinScream.mp3-ca744b8f7dc831137ac85aba2ac0dd22.mp3str"
+
+[deps]
+
+source_file="res://assets/musics/GoblinScream.mp3"
+dest_files=[ "res://.import/GoblinScream.mp3-ca744b8f7dc831137ac85aba2ac0dd22.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

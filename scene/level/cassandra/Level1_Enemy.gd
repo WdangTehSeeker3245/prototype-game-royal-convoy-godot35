@@ -4,6 +4,10 @@ var speed = 100
 var player_chase = false
 var player = null
 
+func _ready():
+	# Connect to the player's signal
+	pass
+
 func _process(delta):
 	if player_chase:
 		var direction = (player.global_position - global_position).normalized()
@@ -16,3 +20,6 @@ func _on_AreaDetection_body_entered(body):
 func _on_AreaDetection_body_exited(body):
 	player = null
 	player_chase = false
+
+
+
