@@ -71,3 +71,4 @@ stream = ExtResource( 6 )
 stream = ExtResource( 8 )
 
 [connection signal="pressed" from="Menu/CenterRow/Buttons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]

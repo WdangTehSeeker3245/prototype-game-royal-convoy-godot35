@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/map/fantasymarker.png" type="Texture" id=1]
+[ext_resource path="res://assets/map/quasarion-map.png" type="Texture" id=2]
+[ext_resource path="res://scene/map/cassandra/cassandra-map.gd" type="Script" id=3]
+[ext_resource path="res://assets/musics/start.mp3" type="AudioStream" id=4]
+
+[sub_resource type="TileSet" id=4]
+resource_local_to_scene = true
+0/name = "fantasymarker.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 50, 145, 35, 35 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "fantasymarker.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 45, 50, 45, 45 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Level1_start" type="Node" parent="."]
+
+[node name="Marker" type="TileMap" parent="Level1_start"]
+tile_set = SubResource( 4 )
+cell_size = Vector2( 10, 10 )
+cell_custom_transform = Transform2D( 25, 0, 0, 25, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 852076, 0, 0 )
+
+[node name="Level1_end" type="Node" parent="."]
+
+[node name="Marker" type="TileMap" parent="Level1_end"]
+tile_set = SubResource( 4 )
+cell_size = Vector2( 10, 10 )
+cell_custom_transform = Transform2D( 25, 0, 0, 25, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 852076, 0, 0, 917606, 1, 0 )
+
+[node name="Level1_line" type="Line2D" parent="."]
+points = PoolVector2Array( 1084, 152, 1053, 161 )
+width = 4.0
+default_color = Color( 1, 0, 0.235294, 1 )
+
+[node name="Level1_button" type="Button" parent="."]
+margin_left = 1015.0
+margin_top = 192.0
+text = "Level 1"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="World" type="TextureRect" parent="ParallaxBackground"]
+show_behind_parent = true
+margin_left = -2.0
+margin_top = 2.0
+margin_right = 1277.0
+margin_bottom = 721.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Decision_SE" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="pressed" from="Level1_button" to="." method="_on_Level1_button_pressed"]

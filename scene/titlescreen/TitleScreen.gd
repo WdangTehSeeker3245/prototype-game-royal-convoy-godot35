@@ -9,3 +9,5 @@ func _on_NewGameButton_pressed():
 	decision.play()
 	get_tree().change_scene("res://scene/character_story_selection/CharacterStorySelection.tscn")
 
+func _on_ExitButton_pressed():
+	get_tree().quit()

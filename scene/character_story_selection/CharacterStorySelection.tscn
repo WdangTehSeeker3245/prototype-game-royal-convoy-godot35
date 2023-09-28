@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/titlescreen/FontsFree-Net-Montserrat-ExtraBold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scene/character_story_selection/CharacterStorySelection.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/character_story_selection/Yulan Ironmare.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/character_story_selection/Thorian Rowan.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/character_story_selection/Edward Lorenzo.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/musics/start.mp3" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -60,3 +61,8 @@ margin_right = 1170.0
 margin_bottom = 654.0
 icon = ExtResource( 4 )
 icon_align = 1
+
+[node name="Decision_SE" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="pressed" from="HBoxContainer/CassandraBtn" to="." method="_on_CassandraBtn_pressed"]
